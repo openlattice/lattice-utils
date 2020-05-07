@@ -16,8 +16,8 @@ const INVALID_PARAMS = [
   '',                             // 13
   ' ',                            // 14
   new String(),                   // 15
-  /regex/,                        // 16
-  'invalid_special_string_value', // 17
+  'invalid_special_string_value', // 16
+  /regex/,                        // 17
 ];
 /* eslint-enable */
 
