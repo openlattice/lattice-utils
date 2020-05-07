@@ -12,7 +12,7 @@ module.exports = {
     '<rootDir>/config/',
     '<rootDir>/docs/',
     '<rootDir>/flow-typed/',
-    '<rootDir>/src/utils/testing/',
+    '<rootDir>/src/testing/',
   ],
   globals: {
     __ENV_DEV__: false,
