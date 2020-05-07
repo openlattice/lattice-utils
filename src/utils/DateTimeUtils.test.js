@@ -22,7 +22,6 @@ describe('DateTimeUtils', () => {
         expect(DateTimeUtils.formatAsDate([invalidParam], '')).toEqual('');
       });
     });
-
   });
 
 });

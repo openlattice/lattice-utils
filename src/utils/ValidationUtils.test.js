@@ -24,7 +24,6 @@ describe('ValidationUtils', () => {
       });
       expect(errors).toEqual([]);
     });
-
   });
 
 });
