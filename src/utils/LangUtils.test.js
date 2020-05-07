@@ -141,7 +141,7 @@ describe('LangUtils', () => {
     test('should return false when given invalid parameters', () => {
       const errors = [];
       List(INVALID_PARAMS)
-        .delete(17) // remove 'invalid_special_string_value'
+        .delete(16) // remove 'invalid_special_string_value'
         .forEach((invalidParam) => {
           if (LangUtils.isNonEmptyString(invalidParam)) {
             errors.push(`expected false - isNonEmptyString(${JSON.stringify(invalidParam)})`);
