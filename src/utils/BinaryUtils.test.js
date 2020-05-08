@@ -74,10 +74,10 @@ describe('BinaryUtils', () => {
 
   describe('base64ToBuffer', () => {
 
-    test('should correctly convert an ArrayBuffer into a JavaScript string (UTF-16)', () => {
-      MOCK_BINARY_DATA.forEach((input) => {
-        const result = BinaryUtils.base64ToBuffer(input.base64);
-        expect(result).toEqual(input.uint8.buffer);
+    test('should correctly convert a Base64-encoded string to an ArrayBuffer', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = BinaryUtils.base64ToBuffer(mock.base64);
+        expect(result).toEqual(mock.uint8.buffer);
       });
     });
 
@@ -101,10 +101,10 @@ describe('BinaryUtils', () => {
 
   describe('bufferToBase64', () => {
 
-    test('should correctly convert an ArrayBuffer into a JavaScript string (UTF-16)', () => {
-      MOCK_BINARY_DATA.forEach((input) => {
-        const result = BinaryUtils.bufferToBase64(input.uint8.buffer);
-        expect(result).toEqual(input.base64);
+    test('should correctly convert an ArrayBuffer to a Base64-encoded string', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = BinaryUtils.bufferToBase64(mock.uint8.buffer);
+        expect(result).toEqual(mock.base64);
       });
     });
 
@@ -117,10 +117,10 @@ describe('BinaryUtils', () => {
 
   describe('bufferToString', () => {
 
-    test('should correctly convert an ArrayBuffer into a JavaScript string (UTF-16)', () => {
-      MOCK_BINARY_DATA.forEach((input) => {
-        const result = BinaryUtils.bufferToString(input.uint8.buffer);
-        expect(result).toEqual(input.value);
+    test('should correctly convert an ArrayBuffer to a string', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = BinaryUtils.bufferToString(mock.uint8.buffer);
+        expect(result).toEqual(mock.value);
       });
     });
 
@@ -133,11 +133,11 @@ describe('BinaryUtils', () => {
 
   describe('stringToBuffer', () => {
 
-    test('should correctly convert a JavaScript string (UTF-16) to an ArrayBuffer', () => {
-      MOCK_BINARY_DATA.forEach((input) => {
-        const result = BinaryUtils.stringToBuffer(input.value);
+    test('should correctly convert a string to an ArrayBuffer', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = BinaryUtils.stringToBuffer(mock.value);
         expect(result).toBeInstanceOf(ArrayBuffer);
-        expect(result).toEqual(input.uint8.buffer);
+        expect(result).toEqual(mock.uint8.buffer);
       });
     });
 
@@ -151,6 +151,102 @@ describe('BinaryUtils', () => {
           expect(() => BinaryUtils.stringToBuffer(invalidParam)).toThrow();
         });
     });
+  });
+
+  describe('inception', () => {
+
+    test('bufferToString(stringToBuffer())', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = BinaryUtils.bufferToString(BinaryUtils.stringToBuffer(mock.value));
+        expect(result).toEqual(mock.value);
+      });
+    });
+
+    test('stringToBuffer(bufferToString())', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = BinaryUtils.stringToBuffer(BinaryUtils.bufferToString(mock.uint8.buffer));
+        expect(result).toBeInstanceOf(ArrayBuffer);
+        expect(new Uint8Array(result)).toEqual(mock.uint8);
+      });
+    });
+
+    test('base64ToBuffer(bufferToBase64())', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = BinaryUtils.base64ToBuffer(BinaryUtils.bufferToBase64(mock.uint8.buffer));
+        expect(result).toBeInstanceOf(ArrayBuffer);
+        expect(new Uint8Array(result)).toEqual(mock.uint8);
+      });
+    });
+
+    test('bufferToBase64(base64ToBuffer())', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = BinaryUtils.bufferToBase64(BinaryUtils.base64ToBuffer(mock.base64));
+        expect(result).toEqual(mock.base64);
+      });
+    });
+
+    test('bufferToString(base64ToBuffer(bufferToBase64(stringToBuffer())))', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = (
+          BinaryUtils.bufferToString(
+            BinaryUtils.base64ToBuffer(
+              BinaryUtils.bufferToBase64(
+                BinaryUtils.stringToBuffer(mock.value)
+              )
+            )
+          )
+        );
+        expect(result).toEqual(mock.value);
+      });
+    });
+
+    test('bufferToBase64(stringToBuffer(bufferToString(base64ToBuffer())))', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = (
+          BinaryUtils.bufferToBase64(
+            BinaryUtils.stringToBuffer(
+              BinaryUtils.bufferToString(
+                BinaryUtils.base64ToBuffer(mock.base64)
+              )
+            )
+          )
+        );
+        expect(result).toEqual(mock.base64);
+      });
+    });
+
+    test('stringToBuffer(bufferToString(base64ToBuffer(bufferToBase64())))', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = (
+          BinaryUtils.stringToBuffer(
+            BinaryUtils.bufferToString(
+              BinaryUtils.base64ToBuffer(
+                BinaryUtils.bufferToBase64(mock.uint8.buffer)
+              )
+            )
+          )
+        );
+        expect(result).toBeInstanceOf(ArrayBuffer);
+        expect(new Uint8Array(result)).toEqual(mock.uint8);
+      });
+    });
+
+    test('base64ToBuffer(bufferToBase64(stringToBuffer(bufferToString())))', () => {
+      MOCK_BINARY_DATA.forEach((mock) => {
+        const result = (
+          BinaryUtils.base64ToBuffer(
+            BinaryUtils.bufferToBase64(
+              BinaryUtils.stringToBuffer(
+                BinaryUtils.bufferToString(mock.uint8.buffer)
+              )
+            )
+          )
+        );
+        expect(result).toBeInstanceOf(ArrayBuffer);
+        expect(new Uint8Array(result)).toEqual(mock.uint8);
+      });
+    });
+
   });
 
 });

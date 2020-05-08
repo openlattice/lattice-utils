@@ -60,7 +60,16 @@ function base64ToBuffer(value :string) :ArrayBuffer {
     throw new Error('invalid parameter: "value" must be a string');
   }
 
-  return stringToBuffer(atob(value));
+  const binaryString = atob(value);
+  const byteCount = binaryString.length;
+
+  const buffer = new ArrayBuffer(byteCount);
+  const bufferView = new Uint8Array(buffer);
+  for (let i = 0; i < byteCount; i += 1) {
+    bufferView[i] = binaryString.charCodeAt(i);
+  }
+
+  return buffer;
 }
 
 export {
