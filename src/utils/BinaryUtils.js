@@ -5,6 +5,10 @@
 import isArrayBuffer from 'lodash/isArrayBuffer';
 import isString from 'lodash/isString';
 
+import Logger from './Logger';
+
+const LOG :Logger = new Logger('BinaryUtils');
+
 function encodeUTF8(str :string) :string {
 
   return unescape(encodeURIComponent(str));
@@ -18,7 +22,9 @@ function decodeUTF8(str :string) :string {
 function bufferToString(value :ArrayBuffer) :string {
 
   if (!isArrayBuffer(value)) {
-    throw new Error('invalid parameter: "value" must be an ArrayBuffer');
+    const errorMsg = 'invalid parameter: "value" must be an ArrayBuffer';
+    LOG.error(errorMsg, value);
+    throw new Error(errorMsg);
   }
 
   const binaryString = String.fromCharCode.apply(null, new Uint8Array(value));
@@ -29,7 +35,9 @@ function bufferToString(value :ArrayBuffer) :string {
 function stringToBuffer(value :string) :ArrayBuffer {
 
   if (!isString(value)) {
-    throw new Error('invalid parameter: "value" must be a string');
+    const errorMsg = 'invalid parameter: "value" must be a string';
+    LOG.error(errorMsg, value);
+    throw new Error(errorMsg);
   }
 
   const encodedString = encodeUTF8(value);
@@ -47,7 +55,9 @@ function stringToBuffer(value :string) :ArrayBuffer {
 function bufferToBase64(value :ArrayBuffer) :string {
 
   if (!isArrayBuffer(value)) {
-    throw new Error('invalid parameter: "value" must be an ArrayBuffer');
+    const errorMsg = 'invalid parameter: "value" must be an ArrayBuffer';
+    LOG.error(errorMsg, value);
+    throw new Error(errorMsg);
   }
 
   const binaryString = String.fromCharCode.apply(null, new Uint8Array(value));
@@ -57,7 +67,9 @@ function bufferToBase64(value :ArrayBuffer) :string {
 function base64ToBuffer(value :string) :ArrayBuffer {
 
   if (!isString(value)) {
-    throw new Error('invalid parameter: "value" must be a string');
+    const errorMsg = 'invalid parameter: "value" must be a string';
+    LOG.error(errorMsg, value);
+    throw new Error(errorMsg);
   }
 
   const binaryString = atob(value);
