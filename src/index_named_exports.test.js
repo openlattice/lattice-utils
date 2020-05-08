@@ -22,6 +22,14 @@ describe('lattice-utils named exports', () => {
     });
   });
 
+  test('should export useGeo', () => {
+    expect(LatticeUtils.useGeo).toBeDefined();
+  });
+
+  test('should export useInput', () => {
+    expect(LatticeUtils.useInput).toBeDefined();
+  });
+
   test('should export the correct version', () => {
     expect(LatticeUtils.version).toEqual(PACKAGE.version);
   });
