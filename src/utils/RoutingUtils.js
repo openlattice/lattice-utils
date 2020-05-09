@@ -10,7 +10,7 @@ type Match = {
   params :{ [key :string] :?string, ... };
 };
 
-function getParamFromMatch(match :Match, param :string) :mixed {
+function getParamFromMatch(match :Match, param :string) :?string {
 
   if (_isObject(match) && _isString(param)) {
 
