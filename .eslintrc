@@ -4,14 +4,16 @@
     "jest": true
   },
   "extends": [
-    "airbnb-base",
+    "airbnb",
     "plugin:flowtype/recommended"
   ],
   "parser": "babel-eslint",
   "plugins": [
     "flowtype",
     "import",
-    "jest"
+    "jest",
+    "react",
+    "react-hooks"
   ],
   "settings": {
     "flowtype": {
@@ -115,6 +117,46 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error"
+    "jest/valid-expect": "error",
+
+    "jsx-a11y/href-no-hash": "off",
+
+    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/rules-of-hooks": "error",
+
+    "react/default-props-match-prop-types": [
+      "error",
+      {
+        "allowRequiredDefaults": true
+      }
+    ],
+    "react/forbid-prop-types": "warn",
+    "react/jsx-closing-bracket-location": [
+      "error",
+      {
+        "selfClosing": "after-props",
+        "nonEmpty": "after-props"
+      }
+    ],
+    "react/jsx-filename-extension": [
+      "warn",
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
+    "react/jsx-indent-props": ["error", 4],
+    "react/jsx-one-expression-per-line": "warn",
+    "react/no-did-update-set-state": "warn",
+    "react/prefer-stateless-function": "warn",
+    "react/prop-types": "warn",
+    "react/require-default-props": [
+      "error",
+      {
+        "forbidDefaultForRequired": false
+      }
+    ],
+    "react/sort-comp": "off",
+    "react/state-in-constructor": ["warn", "always"],
+    "react/static-property-placement": ["error", "static public field"]
   }
 }

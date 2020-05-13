@@ -1,8 +1,12 @@
 /* eslint-disable import/no-named-as-default-member */
 
+import _has from 'lodash/has';
 import { OrderedMap } from 'immutable';
 
 import LatticeUtils from './index';
+import * as Constants from './constants';
+import * as Hooks from './hooks';
+import * as Utils from './utils';
 
 import PACKAGE from '../package.json';
 
@@ -11,7 +15,10 @@ const EXPECTED_OBJ_EXPORTS = OrderedMap({
   BinaryUtils     : { size: 4 },
   DateTimeUtils   : { size: 1 },
   LangUtils       : { size: 7 },
+  ReduxUtils      : { size: 1 },
+  RoutingUtils    : { size: 1 },
   ValidationUtils : { size: 1 },
+  WebCryptoUtils  : { size: 3 },
 });
 /* eslint-enable key-spacing */
 
@@ -24,12 +31,34 @@ describe('lattice-utils default export', () => {
     });
   });
 
-  test('should export useGeo', () => {
-    expect(LatticeUtils.useGeo).toBeDefined();
+  test('should export constants', () => {
+    const errors = [];
+    Object.keys(Constants).forEach((constant) => {
+      if (!_has(LatticeUtils, constant)) {
+        errors.push(`missing export - ${constant}`);
+      }
+    });
+    expect(errors).toEqual([]);
   });
 
-  test('should export useInput', () => {
-    expect(LatticeUtils.useInput).toBeDefined();
+  test('should export hooks', () => {
+    const errors = [];
+    Object.keys(Hooks).forEach((hook) => {
+      if (!_has(LatticeUtils, hook)) {
+        errors.push(`missing export - ${hook}`);
+      }
+    });
+    expect(errors).toEqual([]);
+  });
+
+  test('should export utils', () => {
+    const errors = [];
+    Object.keys(Utils).forEach((util) => {
+      if (!_has(LatticeUtils, util)) {
+        errors.push(`missing export - ${util}`);
+      }
+    });
+    expect(errors).toEqual([]);
   });
 
   test('should export the correct version', () => {

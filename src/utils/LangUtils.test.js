@@ -1,11 +1,10 @@
 /* eslint-disable no-array-constructor, no-new-object, no-new-wrappers */
 
 import { List } from 'immutable';
+
 import * as LangUtils from './LangUtils';
 
-import {
-  INVALID_PARAMS,
-} from '../testing/InvalidParams';
+import { INVALID_PARAMS } from '../testing/InvalidParams';
 
 describe('LangUtils', () => {
 

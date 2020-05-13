@@ -2,10 +2,9 @@
  * @flow
  */
 
-import GeoErrors from './GeoErrors';
+import * as ReduxConstants from './ReduxConstants';
 
+export { default as GeoErrors } from './GeoErrors';
 export type { GeoError } from './GeoErrors';
 
-export {
-  GeoErrors,
-};
+export { ReduxConstants };

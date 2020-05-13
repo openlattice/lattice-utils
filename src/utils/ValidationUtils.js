@@ -2,7 +2,7 @@
  * @flow
  */
 
-import { isNonEmptyString } from './LangUtils';
+import isString from 'lodash/isString';
 
 /*
  * https://github.com/mixer/uuid-validate
@@ -16,7 +16,7 @@ const BASE_UUID_PATTERN :RegExp = /^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]
 
 function isValidUUID(value :any) :boolean %checks {
 
-  return isNonEmptyString(value) && BASE_UUID_PATTERN.test(value);
+  return isString(value) && BASE_UUID_PATTERN.test(value);
 }
 
 export {
