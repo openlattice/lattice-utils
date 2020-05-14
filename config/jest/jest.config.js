@@ -12,7 +12,7 @@ module.exports = {
     '<rootDir>/config/',
     '<rootDir>/docs/',
     '<rootDir>/flow-typed/',
-    '<rootDir>/src/utils/testing/',
+    '<rootDir>/src/testing/',
   ],
   globals: {
     __ENV_DEV__: false,
@@ -25,6 +25,13 @@ module.exports = {
     '<rootDir>/flow-typed/',
   ],
   rootDir: '../..',
+  setupFiles: [
+    '<rootDir>/config/jest/enzyme.config.js',
+  ],
+  setupFilesAfterEnv: [
+    '<rootDir>/config/jest/test.config.js',
+  ],
+  testEnvironment: '<rootDir>/config/jest/jsdom.config.js',
   testURL: 'http://localhost',
   transform: {
     '^.+\\.jsx?$': '<rootDir>/config/jest/babelJestTransformer.js',

@@ -67,6 +67,13 @@ module.exports = (env = {}) => {
     entry: [
       LIB_PATHS.ABS.ENTRY,
     ],
+    externals: {
+      react: 'react',
+      'react-dom': 'react-dom',
+      'react-redux': 'react-redux',
+      redux: 'redux',
+      'redux-reqseq': 'redux-reqseq',
+    },
     mode: env.production ? ENV_PROD : ENV_DEV,
     module: {
       rules: [
