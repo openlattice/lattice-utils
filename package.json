@@ -2,7 +2,7 @@
   "name": "lattice-utils",
   "version": "0.0.0",
   "homepage": "https://github.com/openlattice/lattice-utils",
-  "description": "JavaScript SDK for all OpenLattice REST APIs",
+  "description": "OpenLattice JavaScript library for common utilities",
   "author": {
     "name": "OpenLattice, Inc.",
     "email": "support@openlattice.com",
