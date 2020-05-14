@@ -38,7 +38,7 @@ describe('DateTimeUtils', () => {
       INVALID_PARAMS.forEach((invalidParam) => {
         expect(formatDateTime(invalidParam)).toEqual('---');
         expect(formatDateTime([invalidParam])).toEqual('---');
-        expect(formatDateTime(invalidParam, 'DateTime.DATE_SHORT', '')).toEqual('');
+        expect(formatDateTime(invalidParam, DateTime.DATE_SHORT, '')).toEqual('');
         expect(formatDateTime([invalidParam], DateTime.DATE_SHORT, '')).toEqual('');
       });
     });
@@ -68,11 +68,9 @@ describe('DateTimeUtils', () => {
 
     test('should return a correctly formatted time', () => {
       const expectedFormatPM = '12:34 PM';
-      // expect(formatAsTime('2017-06-29T12:34:56.000-07:00')).toEqual(expectedFormatPM);
       expect(formatAsTime('2017-06-29T12:34:56.000')).toEqual(expectedFormatPM);
       expect(formatAsTime('2017-06-29T12:34:56')).toEqual(expectedFormatPM);
       const expectedFormatAM = '12:34 AM';
-      // expect(formatAsTime('2017-06-29T00:34:56.000-07:00')).toEqual(expectedFormatAM);
       expect(formatAsTime('2017-06-29T00:34:56.000')).toEqual(expectedFormatAM);
       expect(formatAsTime('2017-06-29T00:34:56')).toEqual(expectedFormatAM);
     });
