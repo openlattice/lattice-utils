@@ -2,7 +2,7 @@
  * @flow
  */
 
-import * as BinaryUtils from './BinaryUtils';
+import * as BinaryUtils from './binary';
 import * as DateTimeUtils from './DateTimeUtils';
 import * as LangUtils from './LangUtils';
 import * as ReduxUtils from './ReduxUtils';
