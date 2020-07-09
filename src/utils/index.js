@@ -8,11 +8,10 @@ import * as LangUtils from './lang';
 import * as ReduxUtils from './redux';
 import * as RoutingUtils from './routing';
 import * as ValidationUtils from './validation';
-import * as WebCryptoUtils from './WebCryptoUtils';
-
-export type * from './WebCryptoUtils';
+import * as WebCryptoUtils from './webcrypto';
 
 export { default as Logger } from './Logger';
+export type * from './webcrypto';
 
 export {
   BinaryUtils,
