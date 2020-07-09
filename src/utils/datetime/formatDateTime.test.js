@@ -21,12 +21,12 @@ describe('DateTimeUtils', () => {
 
     test('should correctly handle invalid parameters', () => {
       INVALID_PARAMS.forEach((invalidParam) => {
-        // $FlowFixMe
+        // $FlowFixMe - ignore for test
         expect(formatDateTime(invalidParam)).toEqual(INVALID_DATE_TIME);
-        // $FlowFixMe
+        // $FlowFixMe - ignore for test
         expect(formatDateTime([invalidParam])).toEqual(INVALID_DATE_TIME);
         expect(formatDateTime(invalidParam, DateTime.DATE_SHORT, '')).toEqual('');
-        // $FlowFixMe
+        // $FlowFixMe - ignore for test
         expect(formatDateTime([invalidParam], DateTime.DATE_SHORT, '')).toEqual('');
       });
     });

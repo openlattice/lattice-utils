@@ -3,8 +3,8 @@
  */
 
 import Logger from './Logger';
-import { isNonEmptyString } from './LangUtils';
 import { stringToBuffer } from './binary';
+import { isNonEmptyString } from './lang';
 
 const LOG :Logger = new Logger('WebCryptoUtils');
 
