@@ -14,11 +14,7 @@ import isString from 'lodash/isString';
  */
 const BASE_UUID_PATTERN :RegExp = /^[0-9A-F]{8}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{4}-[0-9A-F]{12}$/i;
 
-function isValidUUID(value :any) :boolean %checks {
+export default function isValidUUID(value :any) :boolean %checks {
 
   return isString(value) && BASE_UUID_PATTERN.test(value);
 }
-
-export {
-  isValidUUID,
-};
