@@ -5,7 +5,7 @@
 import * as BinaryUtils from './binary';
 import * as DateTimeUtils from './datetime';
 import * as LangUtils from './lang';
-import * as ReduxUtils from './ReduxUtils';
+import * as ReduxUtils from './redux';
 import * as RoutingUtils from './RoutingUtils';
 import * as ValidationUtils from './ValidationUtils';
 import * as WebCryptoUtils from './WebCryptoUtils';

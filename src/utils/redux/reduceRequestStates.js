@@ -19,7 +19,7 @@ const isRequestState = (requestState :RequestState) :boolean => (
  * 4. return RequestState.SUCCESS if ALL are SUCCESS
  * 5. return RequestState.STANDBY if ALL are STANDBY
  */
-const reduceRequestStates = (requestStates :RequestState[]) => {
+export default function reduceRequestStates(requestStates :RequestState[]) :?RequestState {
 
   if (!_isArray(requestStates) || !requestStates.length) {
     return undefined;
@@ -60,8 +60,4 @@ const reduceRequestStates = (requestStates :RequestState[]) => {
   });
 
   return result;
-};
-
-export {
-  reduceRequestStates,
-};
+}

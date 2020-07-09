@@ -1,8 +1,12 @@
+/*
+ * @flow
+ */
+
 import { RequestStates } from 'redux-reqseq';
 
-import * as ReduxUtils from './ReduxUtils';
+import reduceRequestStates from './reduceRequestStates';
 
-import { INVALID_PARAMS } from '../testing/InvalidParams';
+import { INVALID_PARAMS } from '../../testing/InvalidParams';
 
 const {
   STANDBY,
@@ -10,8 +14,6 @@ const {
   SUCCESS,
   FAILURE,
 } = RequestStates;
-
-const { reduceRequestStates } = ReduxUtils;
 
 describe('ReduxUtils', () => {
 
