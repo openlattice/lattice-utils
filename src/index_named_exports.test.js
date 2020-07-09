@@ -16,7 +16,7 @@ const EXPECTED_OBJ_EXPORTS = OrderedMap({
   ReduxUtils      : { size: 1 },
   RoutingUtils    : { size: 1 },
   ValidationUtils : { size: 1 },
-  WebCryptoUtils  : { size: 3 },
+  WebCryptoUtils  : { size: 4 },
 });
 /* eslint-enable key-spacing */
 
