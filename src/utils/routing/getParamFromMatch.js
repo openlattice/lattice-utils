@@ -10,7 +10,7 @@ type Match = {
   params :{ [key :string] :?string, ... };
 };
 
-function getParamFromMatch(match :Match, param :string) :?string {
+export default function getParamFromMatch(match :Match, param :string) :?string {
 
   if (_isObject(match) && _isString(param)) {
 
@@ -27,7 +27,3 @@ function getParamFromMatch(match :Match, param :string) :?string {
 
   return null;
 }
-
-export {
-  getParamFromMatch,
-};
