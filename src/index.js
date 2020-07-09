@@ -25,9 +25,9 @@ import {
   WebCryptoUtils,
 } from './utils';
 
+export type { UUID } from './utils/data';
 export type { CryptoKey, CryptoKeyPair } from './utils/webcrypto';
 export type { GeoError } from './constants';
-export type { UUID } from './utils/data';
 
 // injected by Webpack.DefinePlugin
 declare var __VERSION__ :string;
