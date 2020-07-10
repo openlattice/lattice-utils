@@ -13,12 +13,13 @@ import PACKAGE from '../package.json';
 /* eslint-disable key-spacing */
 const EXPECTED_OBJ_EXPORTS = OrderedMap({
   BinaryUtils     : { size: 4 },
+  DataUtils       : { size: 1 },
   DateTimeUtils   : { size: 4 },
   LangUtils       : { size: 7 },
   ReduxUtils      : { size: 1 },
   RoutingUtils    : { size: 1 },
   ValidationUtils : { size: 1 },
-  WebCryptoUtils  : { size: 3 },
+  WebCryptoUtils  : { size: 4 },
 });
 /* eslint-enable key-spacing */
 

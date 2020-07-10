@@ -15,6 +15,7 @@ import {
 } from './hooks';
 import {
   BinaryUtils,
+  DataUtils,
   DateTimeUtils,
   LangUtils,
   Logger,
@@ -24,7 +25,8 @@ import {
   WebCryptoUtils,
 } from './utils';
 
-export type { CryptoKey, CryptoKeyPair } from './utils';
+export type { UUID } from './utils/data';
+export type { CryptoKey, CryptoKeyPair } from './utils/webcrypto';
 export type { GeoError } from './constants';
 
 // injected by Webpack.DefinePlugin
@@ -33,6 +35,7 @@ const version :string = __VERSION__;
 
 export {
   BinaryUtils,
+  DataUtils,
   DateTimeUtils,
   GeoErrors,
   LangUtils,
@@ -52,6 +55,7 @@ export {
 
 export default {
   BinaryUtils,
+  DataUtils,
   DateTimeUtils,
   GeoErrors,
   LangUtils,
