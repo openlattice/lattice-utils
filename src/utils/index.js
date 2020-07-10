@@ -3,6 +3,7 @@
  */
 
 import * as BinaryUtils from './binary';
+import * as DataUtils from './data';
 import * as DateTimeUtils from './datetime';
 import * as LangUtils from './lang';
 import * as ReduxUtils from './redux';
@@ -11,10 +12,10 @@ import * as ValidationUtils from './validation';
 import * as WebCryptoUtils from './webcrypto';
 
 export { default as Logger } from './Logger';
-export type * from './webcrypto';
 
 export {
   BinaryUtils,
+  DataUtils,
   DateTimeUtils,
   LangUtils,
   ReduxUtils,
