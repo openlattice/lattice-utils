@@ -8,7 +8,7 @@ import _isString from 'lodash/isString';
 import { RequestStates } from 'redux-reqseq';
 import type { RequestState } from 'redux-reqseq';
 
-const isRequestState = (requestState :RequestState) :boolean => (
+const isRequestState = (requestState :?RequestState) :boolean => (
   _isString(requestState) && _has(RequestStates, requestState)
 );
 
@@ -19,7 +19,7 @@ const isRequestState = (requestState :RequestState) :boolean => (
  * 4. return RequestState.SUCCESS if ALL are SUCCESS
  * 5. return RequestState.STANDBY if ALL are STANDBY
  */
-export default function reduceRequestStates(requestStates :RequestState[]) :?RequestState {
+export default function reduceRequestStates(requestStates :Array<?RequestState>) :?RequestState {
 
   if (!_isArray(requestStates) || !requestStates.length) {
     return undefined;
