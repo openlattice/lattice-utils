@@ -45,15 +45,15 @@ describe('ReduxUtils', () => {
         let result = reduceRequestStates(invalidParam);
         if (result !== undefined) {
           errors.push(
-            `reduceRequestStates(${JSON.stringify(invalidParam)}) - `
-            + `expected undefined, got ${JSON.stringify(result)}`
+            `reduceRequestStates(${JSON.stringify(invalidParam)})`
+            + ` - expected undefined, got ${JSON.stringify(result)}`
           );
         }
         result = reduceRequestStates([invalidParam]);
         if (result !== undefined) {
           errors.push(
-            `reduceRequestStates([${JSON.stringify(invalidParam)}]) - `
-            + `expected undefined, got ${JSON.stringify(result)}`
+            `reduceRequestStates([${JSON.stringify(invalidParam)}])`
+            + ` - expected undefined, got ${JSON.stringify(result)}`
           );
         }
       });
