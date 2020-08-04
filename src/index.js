@@ -63,6 +63,7 @@ export default {
   GeoErrors,
   LangUtils,
   Logger,
+  PersonUtils,
   ReduxConstants,
   ReduxUtils,
   RoutingUtils,
