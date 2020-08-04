@@ -25,6 +25,7 @@ import {
   WebCryptoUtils,
 } from './utils';
 
+export type { RoutingAction } from './hooks';
 export type { UUID } from './utils/data';
 export type { CryptoKey, CryptoKeyPair } from './utils/webcrypto';
 export type { GeoError } from './constants';
