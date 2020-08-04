@@ -13,6 +13,7 @@ const EXPECTED_OBJ_EXPORTS = OrderedMap({
   BinaryUtils     : { size: 4 },
   DataUtils       : { size: 1 },
   LangUtils       : { size: 7 },
+  PersonUtils     : { size: 1 },
   ReduxUtils      : { size: 1 },
   RoutingUtils    : { size: 1 },
   ValidationUtils : { size: 1 },
