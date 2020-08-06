@@ -9,7 +9,7 @@ import { RequestStates } from 'redux-reqseq';
 
 import useRequestState from './useRequestState';
 
-import { REQUEST_STATE } from '../constants/ReduxConstants';
+import { REQUEST_STATE } from '../constants/redux';
 import { INVALID_PARAMS } from '../testing/InvalidParams';
 
 let mockUseSelector :JestMockFn<any[], any>;

@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { RequestStates } from 'redux-reqseq';
 import type { RequestState } from 'redux-reqseq';
 
-import { REQUEST_STATE } from '../constants/ReduxConstants';
+import { REQUEST_STATE } from '../constants/redux';
 
 const useRequestState = (path :string[]) :?RequestState => {
 
