@@ -19,12 +19,14 @@ import {
   DateTimeUtils,
   LangUtils,
   Logger,
+  PersonUtils,
   ReduxUtils,
   RoutingUtils,
   ValidationUtils,
   WebCryptoUtils,
 } from './utils';
 
+export type { RoutingAction } from './hooks';
 export type { UUID } from './utils/data';
 export type { CryptoKey, CryptoKeyPair } from './utils/webcrypto';
 export type { GeoError } from './constants';
@@ -40,6 +42,7 @@ export {
   GeoErrors,
   LangUtils,
   Logger,
+  PersonUtils,
   ReduxConstants,
   ReduxUtils,
   RoutingUtils,
@@ -60,6 +63,7 @@ export default {
   GeoErrors,
   LangUtils,
   Logger,
+  PersonUtils,
   ReduxConstants,
   ReduxUtils,
   RoutingUtils,

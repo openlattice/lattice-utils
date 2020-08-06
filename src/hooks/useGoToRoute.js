@@ -27,3 +27,5 @@ const useGoToRoute = (route :string, state :any) => {
 };
 
 export default useGoToRoute;
+
+export type { RoutingAction };
