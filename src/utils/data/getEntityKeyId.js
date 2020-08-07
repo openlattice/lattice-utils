@@ -5,9 +5,9 @@
 import { Map, getIn } from 'immutable';
 
 import { OL_ID_FQN } from './constants';
-import type { UUID } from './types';
 
 import { isValidUUID } from '../validation';
+import type { UUID } from '../../types';
 
 export default function getEntityKeyId(entity :Object | Map) :?UUID {
 

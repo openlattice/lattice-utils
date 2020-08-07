@@ -26,10 +26,10 @@ import {
   WebCryptoUtils,
 } from './utils';
 
-export type { RoutingAction } from './hooks';
-export type { UUID } from './utils/data';
-export type { CryptoKey, CryptoKeyPair } from './utils/webcrypto';
 export type { GeoError } from './constants';
+export type { RoutingAction } from './hooks';
+export type { UUID } from './types';
+export type { CryptoKey, CryptoKeyPair } from './utils/webcrypto';
 
 // injected by Webpack.DefinePlugin
 declare var __VERSION__ :string;
