@@ -14,9 +14,9 @@ import { isNonEmptyArray, isNonEmptyString } from '../lang';
 import { isValidUUID } from '../validation';
 import type { UUID } from '../../types';
 
-export default function selectEntitySets<EntitySet>(idsOrNames :Set<UUID | string> | Array<UUID | string>) {
+export default function selectEntitySets<ES>(idsOrNames :Set<UUID | string> | Array<UUID | string>) {
 
-  return (state :Map) :Map<UUID, EntitySet> => {
+  return (state :Map) :Map<UUID, ES> => {
 
     const isValid = (
       (isNonEmptyArray(idsOrNames) || isCollection(idsOrNames))
@@ -33,7 +33,7 @@ export default function selectEntitySets<EntitySet>(idsOrNames :Set<UUID | strin
       idsOrNames.forEach((idOrName) => {
         const entitySetIndex :number = getIn(state, [EDM, ENTITY_SETS_INDEX_MAP, idOrName], -1);
         if (entitySetIndex >= 0) {
-          const entitySet :?EntitySet = getIn(state, [EDM, ENTITY_SETS, entitySetIndex]);
+          const entitySet :?ES = getIn(state, [EDM, ENTITY_SETS, entitySetIndex]);
           if (entitySet && entitySet.id) {
             map.set(entitySet.id, entitySet);
           }
