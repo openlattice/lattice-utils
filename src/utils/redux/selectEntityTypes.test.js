@@ -29,7 +29,7 @@ describe('ReduxUtils', () => {
 
   describe('selectEntityTypes', () => {
 
-    test('should return a map of EntitySets', () => {
+    test('should return a map of EntityTypes', () => {
       const entityTypes1 = selectEntityTypes([MOCK_ENTITY_TYPE.id])(MOCK_STORE);
       const entityTypes2 = selectEntityTypes([MOCK_ENTITY_TYPE.name])(MOCK_STORE);
       expect(entityTypes1.get(MOCK_ENTITY_TYPE.id)).toEqual(MOCK_ENTITY_TYPE);
