@@ -4,7 +4,7 @@
 
 import { RequestStates } from 'redux-reqseq';
 
-import requestIsPending from './requestIsPending';
+import isPending from './isPending';
 
 import { INVALID_PARAMS } from '../../testing/InvalidParams';
 
@@ -17,20 +17,20 @@ const {
 
 describe('ReduxUtils', () => {
 
-  describe('requestIsPending', () => {
+  describe('isPending', () => {
 
     test('return true if request is PENDING', () => {
-      expect(requestIsPending(PENDING)).toEqual(true);
+      expect(isPending(PENDING)).toEqual(true);
     });
 
     test('return false if request is a RequestState other than PENDING', () => {
-      expect(requestIsPending(FAILURE)).toEqual(false);
-      expect(requestIsPending(STANDBY)).toEqual(false);
-      expect(requestIsPending(SUCCESS)).toEqual(false);
+      expect(isPending(FAILURE)).toEqual(false);
+      expect(isPending(STANDBY)).toEqual(false);
+      expect(isPending(SUCCESS)).toEqual(false);
     });
 
     test('return false if parameter type is not RequestState', () => {
-      expect(requestIsPending(INVALID_PARAMS)).toEqual(false);
+      expect(isPending(INVALID_PARAMS)).toEqual(false);
     });
 
   });

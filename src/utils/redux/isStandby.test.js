@@ -4,7 +4,7 @@
 
 import { RequestStates } from 'redux-reqseq';
 
-import requestIsStandby from './requestIsStandby';
+import isStandby from './isStandby';
 
 import { INVALID_PARAMS } from '../../testing/InvalidParams';
 
@@ -17,20 +17,20 @@ const {
 
 describe('ReduxUtils', () => {
 
-  describe('requestIsStandby', () => {
+  describe('isStandby', () => {
 
     test('return true if request is STANDBY', () => {
-      expect(requestIsStandby(STANDBY)).toEqual(true);
+      expect(isStandby(STANDBY)).toEqual(true);
     });
 
     test('return false if request is a RequestState other than STANDBY', () => {
-      expect(requestIsStandby(FAILURE)).toEqual(false);
-      expect(requestIsStandby(PENDING)).toEqual(false);
-      expect(requestIsStandby(SUCCESS)).toEqual(false);
+      expect(isStandby(FAILURE)).toEqual(false);
+      expect(isStandby(PENDING)).toEqual(false);
+      expect(isStandby(SUCCESS)).toEqual(false);
     });
 
     test('return false if parameter type is not RequestState', () => {
-      expect(requestIsStandby(INVALID_PARAMS)).toEqual(false);
+      expect(isStandby(INVALID_PARAMS)).toEqual(false);
     });
 
   });

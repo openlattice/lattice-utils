@@ -4,7 +4,7 @@
 
 import { RequestStates } from 'redux-reqseq';
 
-import requestIsSuccess from './requestIsSuccess';
+import isSuccess from './isSuccess';
 
 import { INVALID_PARAMS } from '../../testing/InvalidParams';
 
@@ -17,20 +17,20 @@ const {
 
 describe('ReduxUtils', () => {
 
-  describe('requestIsSuccess', () => {
+  describe('isSuccess', () => {
 
     test('return true if request is SUCCESS', () => {
-      expect(requestIsSuccess(SUCCESS)).toEqual(true);
+      expect(isSuccess(SUCCESS)).toEqual(true);
     });
 
     test('return false if request is a RequestState other than SUCCESS', () => {
-      expect(requestIsSuccess(FAILURE)).toEqual(false);
-      expect(requestIsSuccess(PENDING)).toEqual(false);
-      expect(requestIsSuccess(STANDBY)).toEqual(false);
+      expect(isSuccess(FAILURE)).toEqual(false);
+      expect(isSuccess(PENDING)).toEqual(false);
+      expect(isSuccess(STANDBY)).toEqual(false);
     });
 
     test('return false if parameter type is not RequestState', () => {
-      expect(requestIsSuccess(INVALID_PARAMS)).toEqual(false);
+      expect(isSuccess(INVALID_PARAMS)).toEqual(false);
     });
 
   });
