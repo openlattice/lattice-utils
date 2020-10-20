@@ -9,11 +9,11 @@ import getPropertyValue from './getPropertyValue';
 
 import { INVALID_PARAMS } from '../../testing/InvalidParams';
 
-const { FQN } = Models;
+const { FullyQualifiedName } = Models;
 
 const MOCK_VALUE = 'Test';
 const MOCK_STRING_PROPERTY = 'ol.name';
-const MOCK_FQN_PROPERTY = FQN.of(MOCK_STRING_PROPERTY);
+const MOCK_FQN_PROPERTY = new FullyQualifiedName(MOCK_STRING_PROPERTY);
 
 describe('DataUtils', () => {
 
