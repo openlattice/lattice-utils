@@ -10,12 +10,12 @@ import getPropertyValues from './getPropertyValues';
 
 import { INVALID_PARAMS } from '../../testing/InvalidParams';
 
-const { FullyQualifiedName } = Models;
+const { FQN } = Models;
 
 const MOCK_NAME_VALUE = 'Test';
 const MOCK_DATETIME_VALUE = DateTime.local().toISO();
-const MOCK_NAME_FQN_PROPERTY = new FullyQualifiedName('ol.name');
-const MOCK_DATETIME_FQN_PROPERTY = new FullyQualifiedName('ol.datetime');
+const MOCK_NAME_FQN_PROPERTY = FQN.of('ol.name');
+const MOCK_DATETIME_FQN_PROPERTY = FQN.of('ol.datetime');
 
 describe('DataUtils', () => {
 
