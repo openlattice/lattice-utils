@@ -50,7 +50,7 @@ describe('DataUtils', () => {
     });
 
     test('should return the default value when given invalid paramters', () => {
-      expect(getPropertyValues({}, INVALID_PARAMS)).toEqual(INVALID_PARAMS.map(() => ''))
+      expect(getPropertyValues({}, INVALID_PARAMS)).toEqual(INVALID_PARAMS.map(() => ''));
       expect(getPropertyValues({}, INVALID_PARAMS, 'Default')).toEqual(INVALID_PARAMS.map(() => 'Default'));
     });
 
