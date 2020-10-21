@@ -11,7 +11,7 @@ import PACKAGE from '../package.json';
 /* eslint-disable key-spacing */
 const EXPECTED_OBJ_EXPORTS = OrderedMap({
   BinaryUtils     : { size: 4 },
-  DataUtils       : { size: 3 },
+  DataUtils       : { size: 4 },
   LangUtils       : { size: 7 },
   PersonUtils     : { size: 1 },
   ReduxUtils      : { size: 9 },
