@@ -15,6 +15,9 @@ const MOCK_VALUES = ['Test1', 'Test2', 'Test3'];
 const MOCK_STRING_PROPERTY = 'ol.name';
 const MOCK_FQN_PROPERTY = FQN.of(MOCK_STRING_PROPERTY);
 
+const MOCK_ENTITY_MAP_USING_FQN = Map().set(MOCK_FQN_PROPERTY, List(MOCK_VALUES));
+const MOCK_ENTITY_OBJ_USING_FQN = MOCK_ENTITY_MAP_USING_FQN.toJS();
+
 describe('DataUtils', () => {
 
   describe('getPropertyValue', () => {
@@ -29,11 +32,11 @@ describe('DataUtils', () => {
         MOCK_STRING_PROPERTY
       )).toEqual(fromJS(MOCK_VALUES));
       expect(getPropertyMultiplicityValue(
-        { [MOCK_FQN_PROPERTY]: MOCK_VALUES },
+        MOCK_ENTITY_OBJ_USING_FQN,
         MOCK_FQN_PROPERTY
       )).toEqual(MOCK_VALUES);
       expect(getPropertyMultiplicityValue(
-        fromJS({ [MOCK_FQN_PROPERTY]: MOCK_VALUES }),
+        MOCK_ENTITY_MAP_USING_FQN,
         MOCK_FQN_PROPERTY
       )).toEqual(fromJS(MOCK_VALUES));
     });
