@@ -24,10 +24,13 @@ export default function formatAsRelative(
   else if (yesterday.hasSame(valueDT, 'day')) relativeDate = RELATIVE_TIMES.YESTERDAY;
   // if more than two days ago but less than a year ago
   else if (Interval.fromDateTimes(oneYearAgo, yesterday).contains(valueDT)) {
+    // $FlowFixMe
     if (valueDT.valueOf() < oneMonthAgo.valueOf()) relativeDate = valueDT.toRelative({ unit: 'months' });
     // if less than a month ago
+    // $FlowFixMe
     else if (valueDT.valueOf() < oneWeekAgo.valueOf()) relativeDate = valueDT.toRelative({ unit: 'weeks' });
     // if less than a week ago
+    // $FlowFixMe
     else relativeDate = valueDT.toRelative({ unit: 'days' });
   }
 
