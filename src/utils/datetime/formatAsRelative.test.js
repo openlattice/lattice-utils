@@ -5,14 +5,13 @@
 import { DateTime } from 'luxon';
 
 import formatAsRelative from './formatAsRelative';
+import formatDateTime from './formatDateTime';
 import { INVALID_DATE_TIME, RELATIVE_TIMES } from './constants';
 import { INVALID_PARAMS } from '../../testing/InvalidParams';
 
 describe('DateTimeUtils', () => {
 
   describe('formatAsDate', () => {
-    const expectedShortDate = '6/29/2017';
-    const expectedLongDate = '6/29/2017, 12:34 PM';
     const today = DateTime.local();
     const yesterday = today.minus({ days: 1 }).toISO();
     const threeDaysAgo = today.minus({ days: 3 }).toISO();
@@ -37,10 +36,14 @@ describe('DateTimeUtils', () => {
     });
 
     test('should return actual date in default DATE_SHORT format if over a year ago', () => {
-      expect(formatAsRelative('2017-06-29T12:34:56')).toEqual(expectedShortDate);
+      expect(formatAsRelative('2017-06-29T12:34:56')).toEqual(
+        formatDateTime('2017-06-29T12:34:56', DateTime.DATE_SHORT)
+      );
     });
     test('should return actual date in specified format if over a year ago', () => {
-      expect(formatAsRelative('2017-06-29T12:34:56', DateTime.DATETIME_SHORT)).toEqual(expectedLongDate);
+      expect(formatAsRelative('2017-06-29T12:34:56', DateTime.DATETIME_SHORT)).toEqual(
+        formatDateTime('2017-06-29T12:34:56', DateTime.DATETIME_SHORT)
+      );
     });
 
     test('should correctly handle invalid parameters', () => {
