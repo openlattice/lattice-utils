@@ -15,10 +15,10 @@ export default function formatAsRelative(
   let relativeDate = formatDateTime(value, format, fallback);
   const valueDT = DateTime.fromISO(value);
   const today = DateTime.local();
-  const yesterday = DateTime.local().minus({ days: 1 });
-  const oneWeekAgo = DateTime.local().minus({ weeks: 1 });
-  const oneMonthAgo = DateTime.local().minus({ months: 1 });
-  const oneYearAgo = DateTime.local().minus({ years: 1 });
+  const yesterday = today.minus({ days: 1 });
+  const oneWeekAgo = today.minus({ weeks: 1 });
+  const oneMonthAgo = today.minus({ months: 1 });
+  const oneYearAgo = today.minus({ years: 1 });
 
   if (today.hasSame(valueDT, 'day')) {
     relativeDate = RELATIVE_TIMES.TODAY;
