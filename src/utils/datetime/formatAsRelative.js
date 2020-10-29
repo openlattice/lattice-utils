@@ -9,7 +9,7 @@ import { INVALID_DATE_TIME, RELATIVE_TIMES } from './constants';
 
 export default function formatAsRelative(
   value :string = '',
-  format :string = DateTime.DATE_SHORT,
+  format :Intl$DateTimeFormatOptions = DateTime.DATE_SHORT, // luxon doesn't export IntlDateTimeFormatOptions yet
   fallback :string = INVALID_DATE_TIME
 ) :string {
   let relativeDate = formatDateTime(value, format, fallback);
