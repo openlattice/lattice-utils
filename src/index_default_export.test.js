@@ -14,7 +14,7 @@ import PACKAGE from '../package.json';
 const EXPECTED_OBJ_EXPORTS = OrderedMap({
   BinaryUtils     : { size: 4 },
   DataUtils       : { size: 1 },
-  DateTimeUtils   : { size: 4 },
+  DateTimeUtils   : { size: 5 },
   LangUtils       : { size: 7 },
   PersonUtils     : { size: 1 },
   ReduxUtils      : { size: 9 },
