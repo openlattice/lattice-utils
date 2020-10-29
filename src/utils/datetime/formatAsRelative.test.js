@@ -11,7 +11,7 @@ import { INVALID_PARAMS } from '../../testing/InvalidParams';
 
 describe('DateTimeUtils', () => {
 
-  describe('formatAsDate', () => {
+  describe('formatAsRelative', () => {
     const today = DateTime.local();
     const yesterday = today.minus({ days: 1 }).toISO();
     const threeDaysAgo = today.minus({ days: 3 }).toISO();
