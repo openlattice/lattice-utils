@@ -20,8 +20,8 @@ export default function formatAsRelative(
   if (yesterday.hasSame(valueDT, 'day')) {
     return RELATIVE_TIMES.YESTERDAY;
   }
-  // $FlowFixMe
   if (valueDT.isValid) {
+    // $FlowFixMe
     return valueDT.toRelative();
   }
   return fallback;
