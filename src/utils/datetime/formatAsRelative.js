@@ -8,7 +8,7 @@ import { RELATIVE_TIMES } from './constants';
 
 export default function formatAsRelative(
   value :string = '',
-  fallback :string
+  fallback ?:string = ''
 ) :string {
   const valueDT = DateTime.fromISO(value);
   const today = DateTime.local();
