@@ -1,6 +1,6 @@
 {
   "name": "lattice-utils",
-  "version": "0.7.0",
+  "version": "0.8.0",
   "homepage": "https://github.com/openlattice/lattice-utils",
   "description": "OpenLattice JavaScript library for common utilities",
   "author": {
