@@ -9,25 +9,29 @@ import {
   getIn,
   isCollection,
 } from 'immutable';
+import { Models } from 'lattice';
 import type { EntityType } from 'lattice';
 
 import { EDM, ENTITY_TYPES, ENTITY_TYPES_INDEX_MAP } from '../../constants/redux';
-import { isNonEmptyString } from '../lang';
 import { isValidUUID } from '../validation';
 import type { UUID } from '../../types';
 
-export default function selectEntityTypes(idsOrNames :Set<UUID | string> | Array<UUID | string>) {
+const { FQN } = Models;
+
+const EMPTY_MAP = Map();
+
+export default function selectEntityTypes(idsOrTypes :Set<FQN | UUID | string> | Array<FQN | UUID | string>) {
 
   return (state :Map) :Map<UUID, EntityType> => {
 
-    if (!_isArray(idsOrNames) && !isCollection(idsOrNames)) {
-      return Map();
+    if (!_isArray(idsOrTypes) && !isCollection(idsOrTypes)) {
+      return EMPTY_MAP;
     }
 
     const entityTypesMap = Map().withMutations((map :Map) => {
-      idsOrNames.forEach((idOrName) => {
-        if (isValidUUID(idOrName) || isNonEmptyString(idOrName)) {
-          const entityTypeIndex :number = getIn(state, [EDM, ENTITY_TYPES_INDEX_MAP, idOrName], -1);
+      idsOrTypes.forEach((idOrType) => {
+        if (isValidUUID(idOrType) || FQN.isValid(idOrType)) {
+          const entityTypeIndex :number = getIn(state, [EDM, ENTITY_TYPES_INDEX_MAP, idOrType], -1);
           if (entityTypeIndex >= 0) {
             const entityType :?EntityType = getIn(state, [EDM, ENTITY_TYPES, entityTypeIndex]);
             if (entityType && entityType.id) {
@@ -37,6 +41,10 @@ export default function selectEntityTypes(idsOrNames :Set<UUID | string> | Array
         }
       });
     });
+
+    if (entityTypesMap.isEmpty()) {
+      return EMPTY_MAP;
+    }
 
     return entityTypesMap;
   };

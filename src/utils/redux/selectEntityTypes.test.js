@@ -2,6 +2,7 @@
  * @flow
  */
 
+import { Models } from 'lattice';
 import { List, Map } from 'immutable';
 
 import selectEntityTypes from './selectEntityTypes';
@@ -9,10 +10,12 @@ import selectEntityTypes from './selectEntityTypes';
 import { EDM, ENTITY_TYPES, ENTITY_TYPES_INDEX_MAP } from '../../constants/redux';
 import { INVALID_PARAMS } from '../../testing/InvalidParams';
 
+const { FQN } = Models;
+
 const MOCK_ENTITY_TYPE = {
   id: 'afd4d995-e05f-4b63-a4d7-416138e27905',
-  name: 'MockEntityTypeName',
   title: 'MockEntityTypeTitle',
+  type: FQN.of('mock.entitytype'),
 };
 
 const MOCK_STORE = Map({
@@ -20,7 +23,8 @@ const MOCK_STORE = Map({
     [ENTITY_TYPES]: List([MOCK_ENTITY_TYPE]),
     [ENTITY_TYPES_INDEX_MAP]: Map({
       [MOCK_ENTITY_TYPE.id]: 0,
-      [MOCK_ENTITY_TYPE.name]: 0,
+      // $FlowFixMe
+      [MOCK_ENTITY_TYPE.type]: 0,
     }),
   }),
 });
@@ -31,7 +35,7 @@ describe('ReduxUtils', () => {
 
     test('should return a map of EntityTypes', () => {
       const entityTypes1 = selectEntityTypes([MOCK_ENTITY_TYPE.id])(MOCK_STORE);
-      const entityTypes2 = selectEntityTypes([MOCK_ENTITY_TYPE.name])(MOCK_STORE);
+      const entityTypes2 = selectEntityTypes([MOCK_ENTITY_TYPE.type])(MOCK_STORE);
       expect(entityTypes1.get(MOCK_ENTITY_TYPE.id)).toEqual(MOCK_ENTITY_TYPE);
       expect(entityTypes2.get(MOCK_ENTITY_TYPE.id)).toEqual(MOCK_ENTITY_TYPE);
       expect(entityTypes1.toJS()).toEqual({ [MOCK_ENTITY_TYPE.id]: MOCK_ENTITY_TYPE });
