@@ -2,29 +2,34 @@
  * @flow
  */
 
-import isObject from 'lodash/isObject';
-import {
-  List,
-  Map,
-  get,
-  getIn,
-} from 'immutable';
+/* eslint-disable no-redeclare */
+
+import { get, getIn } from 'immutable';
 import { Models } from 'lattice';
 
-import { isNonEmptyArray, isNonEmptyString } from '../lang';
+import { isNonEmptyArray } from '../lang';
 
 const { FQN } = Models;
 
-export default function getPropertyValue(
-  entity :Map | Object,
-  key :FQN | string | Array<FQN | string | number>,
-  fallback ?:boolean | number | string = '',
-) :boolean | number | string | Array<boolean | number | string> | List {
+declare function getPropertyValue<DT, FB :boolean | number | string>(
+  entity :any,
+  key :[FQN, number] | [string, number],
+  fallback ?:FB,
+) :DT | FB;
+
+declare function getPropertyValue<DT, FB :boolean | number | string>(
+  entity :any,
+  key :FQN | string,
+  fallback ?:FB,
+) :Array<DT> | FB;
+
+export default function getPropertyValue(entity, key, fallback = '') {
 
   if (isNonEmptyArray(key)) {
     return getIn(entity, key, fallback);
   }
-  if (isNonEmptyString(key) || isObject(key)) {
+
+  if (FQN.isValid(key)) {
     return get(entity, key, fallback);
   }
 
