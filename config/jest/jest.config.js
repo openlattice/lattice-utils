@@ -5,6 +5,7 @@ module.exports = {
   collectCoverageFrom: [
     '**/src/index.js',
     '**/src/**/*.js',
+    '!**/src/**/*.test.flow.js',
   ],
   coverageDirectory: '<rootDir>/coverage',
   coveragePathIgnorePatterns: [
