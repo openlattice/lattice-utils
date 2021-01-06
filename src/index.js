@@ -12,6 +12,7 @@ import {
   useGoToRoute,
   useInput,
   useRequestState,
+  useStepState,
 } from './hooks';
 import {
   BinaryUtils,
@@ -53,6 +54,7 @@ export {
   useGoToRoute,
   useInput,
   useRequestState,
+  useStepState,
   version,
 };
 
@@ -74,5 +76,6 @@ export default {
   useGoToRoute,
   useInput,
   useRequestState,
+  useStepState,
   version,
 };
