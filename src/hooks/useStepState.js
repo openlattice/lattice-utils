@@ -18,7 +18,7 @@ export default function useStepState(
 
   const [step, setStep] = useState(initial);
 
-  if (inRange(initial, max)) {
+  if (!inRange(initial, max)) {
     throw new RangeError(`"initial" must be between 0 and ${max}`);
   }
 
