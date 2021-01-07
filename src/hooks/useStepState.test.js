@@ -10,6 +10,8 @@ import { mount } from 'enzyme';
 
 import useStepState from './useStepState';
 
+import expectRenderError from '../testing/expectRenderError';
+
 const MAX_STEPS = 10;
 
 const Component = ({
@@ -33,7 +35,11 @@ const Component = ({
 describe('useStepState', () => {
 
   test('should throw if initial step is out of range', () => {
-    expect(() => mount(<Component initial={100} />)).toThrow();
+    // https://github.com/facebook/react/issues/11098#issuecomment-412682721
+    expectRenderError(
+      <Component initial={100} />,
+      `"initial" must be between 0 and ${MAX_STEPS}`
+    );
   });
 
   test('stepBack should correctly decrement the step', () => {
