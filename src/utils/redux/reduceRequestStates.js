@@ -2,15 +2,9 @@
  * @flow
  */
 
-import _has from 'lodash/has';
 import _isArray from 'lodash/isArray';
-import _isString from 'lodash/isString';
 import { RequestStates } from 'redux-reqseq';
 import type { RequestState } from 'redux-reqseq';
-
-const isRequestState = (requestState :?RequestState) :boolean => (
-  _isString(requestState) && _has(RequestStates, requestState)
-);
 
 /*
  * 1. return undefined if ANY are not RequestStates
@@ -25,39 +19,55 @@ export default function reduceRequestStates(requestStates :Array<?RequestState>)
     return undefined;
   }
 
-  let result :?RequestState;
+  let anyInvalid = false;
+  let anyFailure = false;
+  let anyPending = false;
+  let successCount = 0;
+  let standbyCount = 0;
 
-  requestStates.forEach((requestState, index) => {
-
-    if (index === 0) { // result === undefined
-      if (isRequestState(requestState)) {
-        result = requestState;
-      }
-      return;
-    }
-
-    if (!isRequestState(requestState) || result === undefined) {
-      result = undefined;
-      return;
-    }
-
+  requestStates.forEach((requestState) => {
     if (requestState === RequestStates.FAILURE) {
-      result = RequestStates.FAILURE;
-      return;
+      anyFailure = true;
     }
-
-    if (requestState === RequestStates.PENDING || result === RequestStates.PENDING) {
-      result = RequestStates.PENDING;
-      return;
+    else if (requestState === RequestStates.PENDING) {
+      anyPending = true;
     }
-
-    if (requestState === RequestStates.SUCCESS && result === RequestStates.SUCCESS) {
-      result = RequestStates.SUCCESS;
-      return;
+    else if (requestState === RequestStates.SUCCESS) {
+      successCount += 1;
     }
-
-    result = RequestStates.STANDBY;
+    else if (requestState === RequestStates.STANDBY) {
+      standbyCount += 1;
+    }
+    else {
+      anyInvalid = true;
+    }
   });
 
-  return result;
+  // 1. return undefined if ANY are not RequestStates
+  if (anyInvalid) {
+    return undefined;
+  }
+
+  // 2. return RequestState.FAILURE if ANY are FAILURE
+  if (anyFailure) {
+    return RequestStates.FAILURE;
+  }
+
+  // 3. return RequestState.PENDING if ANY are PENDING
+  if (anyPending) {
+    return RequestStates.PENDING;
+  }
+
+  // 4. return RequestState.SUCCESS if ALL are SUCCESS
+  if (successCount === requestStates.length) {
+    return RequestStates.SUCCESS;
+  }
+
+  // 5. return RequestState.STANDBY if ALL are STANDBY
+  if (standbyCount === requestStates.length) {
+    return RequestStates.STANDBY;
+  }
+
+  // NOTE: edge case - what should [SUCCESS, STANDBY] reduce to?
+  return undefined;
 }
