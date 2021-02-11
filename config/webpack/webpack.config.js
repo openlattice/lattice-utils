@@ -68,6 +68,8 @@ module.exports = (env = {}) => {
       LIB_PATHS.ABS.ENTRY,
     ],
     externals: {
+      axios: 'axios',
+      lattice: 'lattice',
       react: 'react',
       'react-dom': 'react-dom',
       'react-redux': 'react-redux',
