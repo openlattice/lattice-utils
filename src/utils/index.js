@@ -2,6 +2,7 @@
  * @flow
  */
 
+import * as AxiosUtils from './axios';
 import * as BinaryUtils from './binary';
 import * as DataUtils from './data';
 import * as DateTimeUtils from './datetime';
@@ -15,6 +16,7 @@ import * as WebCryptoUtils from './webcrypto';
 export { default as Logger } from './Logger';
 
 export {
+  AxiosUtils,
   BinaryUtils,
   DataUtils,
   DateTimeUtils,

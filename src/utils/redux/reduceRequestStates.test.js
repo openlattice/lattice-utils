@@ -15,18 +15,45 @@ const {
   FAILURE,
 } = RequestStates;
 
+// https://stackoverflow.com/a/64904542
+function permute<T>(list :T[], size :number = list.length) :T[][] {
+  if (size > list.length) {
+    return [];
+  }
+  if (size === 1) {
+    return list.map((item) => [item]);
+  }
+  return list.flatMap((item) => (
+    permute(list.filter((i) => i !== item), size - 1).map((result) => [item, ...result])
+  ));
+}
+
 describe('ReduxUtils', () => {
 
   describe('reduceRequestStates', () => {
 
     test('return FAILURE if any are FAILURE', () => {
+      const errors = [];
+      permute([FAILURE, SUCCESS, PENDING, STANDBY]).forEach((i) => {
+        const reducedRS = reduceRequestStates(i);
+        if (reducedRS !== FAILURE) {
+          errors.push(`reduceRequestStates([${JSON.stringify(i)}]) - expected ${FAILURE}, got ${String(reducedRS)}`);
+        }
+      });
+      expect(errors).toEqual([]);
       expect(reduceRequestStates([FAILURE])).toEqual(FAILURE);
-      expect(reduceRequestStates([STANDBY, PENDING, SUCCESS, FAILURE])).toEqual(FAILURE);
     });
 
     test('return PENDING if any are PENDING and none are FAILURE', () => {
+      const errors = [];
+      permute([PENDING, SUCCESS, STANDBY]).forEach((i) => {
+        const reducedRS = reduceRequestStates(i);
+        if (reducedRS !== PENDING) {
+          errors.push(`reduceRequestStates([${JSON.stringify(i)}]) - expected ${PENDING}, got ${String(reducedRS)}`);
+        }
+      });
+      expect(errors).toEqual([]);
       expect(reduceRequestStates([PENDING])).toEqual(PENDING);
-      expect(reduceRequestStates([STANDBY, SUCCESS, PENDING, SUCCESS])).toEqual(PENDING);
     });
 
     test('return SUCCESS if ALL are SUCCESS', () => {
