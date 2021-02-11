@@ -8,6 +8,7 @@ import {
 } from './constants';
 import {
   useBoolean,
+  useError,
   useGeo,
   useGoToRoute,
   useInput,
@@ -15,6 +16,7 @@ import {
   useStepState,
 } from './hooks';
 import {
+  AxiosUtils,
   BinaryUtils,
   DataUtils,
   DateTimeUtils,
@@ -37,6 +39,7 @@ declare var __VERSION__ :string;
 const version :string = __VERSION__;
 
 export {
+  AxiosUtils,
   BinaryUtils,
   DataUtils,
   DateTimeUtils,
@@ -50,6 +53,7 @@ export {
   ValidationUtils,
   WebCryptoUtils,
   useBoolean,
+  useError,
   useGeo,
   useGoToRoute,
   useInput,
@@ -59,6 +63,7 @@ export {
 };
 
 export default {
+  AxiosUtils,
   BinaryUtils,
   DataUtils,
   DateTimeUtils,
@@ -72,6 +77,7 @@ export default {
   ValidationUtils,
   WebCryptoUtils,
   useBoolean,
+  useError,
   useGeo,
   useGoToRoute,
   useInput,
