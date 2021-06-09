@@ -96,8 +96,10 @@ module.exports = (env = {}) => {
     },
     output: {
       filename: 'index.js',
-      library: 'LatticeUtils',
-      libraryTarget: 'umd',
+      library: {
+        name: 'LatticeUtils',
+        type: 'umd',
+      },
       path: BUILD,
       publicPath: '/',
     },
