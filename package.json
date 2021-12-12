@@ -55,7 +55,7 @@
     "immutable": "4.0.0-rc.10",
     "import-sort-style-openlattice": "~0.1.0",
     "jest": "~27.3.1",
-    "lattice": "~0.95.0",
+    "lattice": "~0.96.0",
     "lodash": "~4.17.21",
     "luxon": "~1.28.0",
     "npm-run-all": "~4.1.5",
